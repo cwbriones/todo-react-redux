@@ -1,24 +1,18 @@
-{
+module.exports = {
     "env": {
         "browser": true,
-        "es6": true,
-        "node": true
+        "es6": true
     },
     "extends": "eslint:recommended",
     "parserOptions": {
         "ecmaVersion": 6,
         "ecmaFeatures": {
-            "experimentalObjectRestSpread": true,
             "jsx": true
         },
         "sourceType": "module"
     },
-    "plugins" : [
+    "plugins": [
         "react"
     ],
-    "extends" : [
-        "airbnb"
-        // "eslint:recommended",
-        // "plugin:react/recommended"
-    ]
-}
+    "extends" : "airbnb"
+};

@@ -4,14 +4,14 @@ import Link from '../components/Link';
 
 function mapStateToProps(state, ownProps) {
   return {
-    active: ownProps.filter === state.visibilityFilter
-  }
+    active: ownProps.filter === state.visibilityFilter,
+  };
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-    onClick: () => { dispatch(setVisibilityFilter(ownProps.filter)) }
-  }
+    onClick: () => dispatch(setVisibilityFilter(ownProps.filter)),
+  };
 }
 
 const FilterLink = connect(

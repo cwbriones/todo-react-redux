@@ -5,8 +5,8 @@ import { createStore } from 'redux';
 import todoApp from './reducers';
 import App from './components/App';
 
-let store = createStore(todoApp);
-let mount = document.getElementById("main-container")
+const store = createStore(todoApp);
+const mount = document.getElementById('main-container');
 
 render(
   <Provider store={store}>

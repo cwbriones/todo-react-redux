@@ -7,15 +7,16 @@ let AddTodo = ({ dispatch }) => {
 
   return (
     <div>
-      <input ref={node => { input = node }} />
+      <input ref={node => { input = node; }} />
       <button onClick={() => {
-        dispatch(addTodo(input.value))
-        input.value = ''
-      }}>
+        dispatch(addTodo(input.value));
+        input.value = '';
+      }}
+      >
         Add Todo
       </button>
     </div>
-  )
+  );
 };
 
 AddTodo = connect()(AddTodo);

@@ -5,26 +5,26 @@ export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 export const VisibilityFilters = {
   SHOW_ALL: 'SHOW_ALL',
   SHOW_COMPLETED: 'SHOW_COMPLETED',
-  SHOW_ACTIVE: 'SHOW_ACTIVE'
-}
+  SHOW_ACTIVE: 'SHOW_ACTIVE',
+};
 
 export function addTodo(text) {
   return {
     type: ADD_TODO,
-    text
-  }
+    text,
+  };
 }
 
 export function toggleTodo(id) {
   return {
     type: COMPLETE_TODO,
-    id
-  }
+    id,
+  };
 }
 
 export function setVisibilityFilter(filter) {
   return {
     type: 'SET_VISIBILITY_FILTER',
-    filter
-  }
+    filter,
+  };
 }

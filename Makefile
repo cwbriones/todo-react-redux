@@ -23,8 +23,7 @@ test:
 	mocha --compilers js:babel-register -u bdd -R spec test
 
 lint:
-	flow
-	eslint src
+	eslint $(SRC)/js
 
 watch:
 	$(SERVE) public &\
