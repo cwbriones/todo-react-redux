@@ -1,8 +1,7 @@
 import React, { PropTypes } from 'react';
 
-const Todo = ({ onClick, completed, text }) => (
+const Todo = ({ onClickCheck, onClickDestroy, completed, text }) => (
     <li
-      onClick={onClick}
       className={completed ? 'completed' : 'view'}
     >
       <label>{text}</label>
@@ -10,13 +9,18 @@ const Todo = ({ onClick, completed, text }) => (
         className="toggle"
         type="checkbox"
         checked={completed}
+        onChange={onClickCheck}
       />
-      <button className="destroy" />
+      <button
+        className="destroy"
+        onClick={onClickDestroy}
+      />
     </li>
   );
 
 Todo.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onClickCheck: PropTypes.func.isRequired,
+  onClickDestroy: PropTypes.func.isRequired,
   completed: PropTypes.bool.isRequired,
   text: PropTypes.string.isRequired,
 };
