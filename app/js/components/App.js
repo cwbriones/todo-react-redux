@@ -5,9 +5,21 @@ import VisibleTodoList from '../containers/VisibleTodoList';
 
 const App = () => (
   <div>
-    <AddTodo />
-    <VisibleTodoList />
-    <Footer />
+    <section className="todoapp">
+      <header className="header">
+      <h1>todos</h1>
+      <AddTodo />
+      </header>
+      <section className="main">
+      <input className="toggle-all" type="checkbox" />
+      <VisibleTodoList />
+      </section>
+      <Footer />
+    </section>
+    <footer className="info">
+      <p>Double-click to edit a todo</p>
+      <p>Written by Christian Briones</p>
+    </footer>
   </div>
 );
 

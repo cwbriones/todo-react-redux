@@ -6,16 +6,18 @@ let AddTodo = ({ dispatch }) => {
   let input;
 
   return (
-    <div>
-      <input ref={node => { input = node; }} />
-      <button onClick={() => {
-        dispatch(addTodo(input.value));
-        input.value = '';
+    <input
+      className="new-todo"
+      placeholder="What needs to be done?"
+      autoFocus
+      onKeyDown={e => {
+        const text = e.target;
+        if (e.which === 13) {
+          dispatch(addTodo(text.value));
+          text.value = '';
+        }
       }}
-      >
-        Add Todo
-      </button>
-    </div>
+    />
   );
 };
 

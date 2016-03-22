@@ -3,12 +3,15 @@ import React, { PropTypes } from 'react';
 const Todo = ({ onClick, completed, text }) => (
     <li
       onClick={onClick}
-      className={completed ? 'completed' : ''}
-      style={{
-        textDecoration: completed ? 'line-through' : 'none',
-      }}
+      className={completed ? 'completed' : 'view'}
     >
-      {text}
+      <label>{text}</label>
+      <input
+        className="toggle"
+        type="checkbox"
+        checked={completed}
+      />
+      <button className="destroy" />
     </li>
   );
 

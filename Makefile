@@ -6,7 +6,7 @@ BUILD     := ./build
 JS_ENTRY  := $(SRC)/js/index.js
 JS_BUNDLE := $(BUILD)/app.min.js
 
-SERVE     := http-server
+SERVE     := http-server "$(BUILD)"
 
 BROWSERIFY_ARGS := -t babelify -v
 
@@ -27,7 +27,7 @@ lint:
 
 watch:
 	$(SERVE) public &\
-	watchify $(JS_ENTRY) --debug -p livereactload $(BROWSERIFY_ARGS) &\
+	watchify $(JS_ENTRY) --debug -p livereactload $(BROWSERIFY_ARGS) -o $(JS_BUNDLE) &\
 	livereload $(SRC) -d --exclusions "/\\.js/" &\
 	wait
 
