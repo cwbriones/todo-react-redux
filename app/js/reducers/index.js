@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import {
   ADD_TODO,
   COMPLETE_TODO,
+  TOGGLE_ALL,
   SET_VISIBILITY_FILTER,
   DELETE_TODO,
   VisibilityFilters,
@@ -66,6 +67,17 @@ function todos(state = initialTodos, action) {
     case DELETE_TODO: {
       const newTodoItems = state.todoItems.filter((todo) =>
         todo.id !== action.id
+      );
+      return Object.assign({}, state, {
+        todoItems: newTodoItems,
+      });
+    }
+    case TOGGLE_ALL: {
+      const allMarked = state.todoItems.filter((todo) =>
+        !todo.completed
+      ).length === 0;
+      const newTodoItems = state.todoItems.map((todo) =>
+        Object.assign({}, todo, { completed: !allMarked })
       );
       return Object.assign({}, state, {
         todoItems: newTodoItems,

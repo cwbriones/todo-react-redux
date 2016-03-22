@@ -10,10 +10,7 @@ const App = () => (
       <h1>todos</h1>
       <AddTodo />
       </header>
-      <section className="main">
-      <input className="toggle-all" type="checkbox" />
       <VisibleTodoList />
-      </section>
       <Footer />
     </section>
     <footer className="info">
