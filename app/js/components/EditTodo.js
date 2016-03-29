@@ -5,8 +5,16 @@ export default class EditTodo extends React.Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleKeypress = this.handleKeypress.bind(this);
 
     this.state = { text: this.props.text };
+  }
+
+  handleKeypress(e) {
+    const text = e.target.value.trim();
+    if (e.which === 13) {
+      this.props.onSubmit(text);
+    }
   }
 
   handleChange(e) {
@@ -24,6 +32,7 @@ export default class EditTodo extends React.Component {
         autoFocus
         onBlur={this.handleSubmit}
         onChange={this.handleChange}
+        onKeyDown={this.handleKeypress}
         value={this.state.text}
       />
     );
