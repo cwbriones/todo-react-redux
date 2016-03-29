@@ -5,6 +5,8 @@ import {
   TOGGLE_ALL,
   SET_VISIBILITY_FILTER,
   DELETE_TODO,
+  EDIT_TODO,
+  SUBMIT_EDIT,
   VisibilityFilters,
 } from '../actions';
 
@@ -15,11 +17,13 @@ const initialTodos = {
       id: 0,
       text: 'Get started with ES6 and React-Redux',
       completed: true,
+      editing: false,
     },
     {
       id: 1,
       text: 'Build my first Redux app',
       completed: false,
+      editing: false,
     },
   ],
   nextId: 2,
@@ -43,6 +47,7 @@ function todos(state = initialTodos, action) {
         {
           text: action.text,
           completed: false,
+          editing: false,
           id: state.nextId,
         },
       ];
@@ -56,6 +61,34 @@ function todos(state = initialTodos, action) {
         if (todo.id === action.id) {
           return Object.assign({}, todo, {
             completed: !todo.completed,
+          });
+        }
+        return todo;
+      });
+      return Object.assign({}, state, {
+        todoItems: newTodoItems,
+      });
+    }
+    case EDIT_TODO: {
+      console.log("edit " + action.id);
+      const newTodoItems = state.todoItems.map((todo) => {
+        if (todo.id === action.id) {
+          return Object.assign({}, todo, {
+            editing: true,
+          });
+        }
+        return todo;
+      });
+      return Object.assign({}, state, {
+        todoItems: newTodoItems,
+      });
+    }
+    case SUBMIT_EDIT: {
+      const newTodoItems = state.todoItems.map((todo) => {
+        if (todo.id === action.id) {
+          return Object.assign({}, todo, {
+            editing: false,
+            text: action.text,
           });
         }
         return todo;

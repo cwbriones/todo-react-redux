@@ -1,10 +1,20 @@
 import React, { PropTypes } from 'react';
+import EditTodo from './EditTodo';
 
-const Todo = ({ onClickCheck, onClickDestroy, completed, text }) => (
+function Todo({ onClickCheck, onClickDestroy, onEdit, submitEdit, completed, text, editing }) {
+  const completedClass = completed ? 'completed' : '';
+  const editingClass = editing ? 'editing' : '';
+  const todoClass = `${editingClass} ${completedClass}`;
+  return (
     <li
-      className={completed ? 'completed' : 'view'}
+      className={todoClass}
     >
-      <label>{text}</label>
+      <div className="view">
+      <label
+        onDoubleClick={onEdit}
+      >
+        {text}
+      </label>
       <input
         className="toggle"
         type="checkbox"
@@ -15,13 +25,24 @@ const Todo = ({ onClickCheck, onClickDestroy, completed, text }) => (
         className="destroy"
         onClick={onClickDestroy}
       />
+      </div>
+      <EditTodo
+        className="edit"
+        autoFocus
+        onSubmit={submitEdit}
+        text={text}
+      />
     </li>
   );
+}
 
 Todo.propTypes = {
   onClickCheck: PropTypes.func.isRequired,
   onClickDestroy: PropTypes.func.isRequired,
+  onEdit: PropTypes.func.isRequired,
+  submitEdit: PropTypes.func.isRequired,
   completed: PropTypes.bool.isRequired,
+  editing: PropTypes.bool.isRequired,
   text: PropTypes.string.isRequired,
 };
 

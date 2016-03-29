@@ -4,6 +4,8 @@ export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 export const DELETE_TODO = 'DELETE_TODO';
 export const DELETE_ALL = 'DELETE_ALL';
 export const TOGGLE_ALL = 'TOGGLE_ALL';
+export const EDIT_TODO = 'EDIT_TODO';
+export const SUBMIT_EDIT = 'SUBMIT_EDIT';
 
 export const VisibilityFilters = {
   SHOW_ALL: 'SHOW_ALL',
@@ -41,6 +43,21 @@ export function toggleTodo(id) {
   return {
     type: COMPLETE_TODO,
     id,
+  };
+}
+
+export function editTodo(id) {
+  return {
+    type: EDIT_TODO,
+    id,
+  };
+}
+
+export function submitEdit(id, text) {
+  return {
+    type: SUBMIT_EDIT,
+    id,
+    text,
   };
 }
 
