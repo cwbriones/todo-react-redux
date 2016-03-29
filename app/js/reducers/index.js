@@ -12,21 +12,8 @@ import {
 
 const { SHOW_ALL } = VisibilityFilters;
 const initialTodos = {
-  todoItems: [
-    {
-      id: 0,
-      text: 'Get started with ES6 and React-Redux',
-      completed: true,
-      editing: false,
-    },
-    {
-      id: 1,
-      text: 'Build my first Redux app',
-      completed: false,
-      editing: false,
-    },
-  ],
-  nextId: 2,
+  todoItems: [],
+  nextId: 0,
 };
 
 
