@@ -7,6 +7,7 @@ import {
   DELETE_TODO,
   EDIT_TODO,
   SUBMIT_EDIT,
+  CLEAR_COMPLETED,
   VisibilityFilters,
 } from '../actions';
 
@@ -57,7 +58,6 @@ function todos(state = initialTodos, action) {
       });
     }
     case EDIT_TODO: {
-      console.log("edit " + action.id);
       const newTodoItems = state.todoItems.map((todo) => {
         if (todo.id === action.id) {
           return Object.assign({}, todo, {
@@ -99,6 +99,12 @@ function todos(state = initialTodos, action) {
       const newTodoItems = state.todoItems.map((todo) =>
         Object.assign({}, todo, { completed: !allMarked })
       );
+      return Object.assign({}, state, {
+        todoItems: newTodoItems,
+      });
+    }
+    case CLEAR_COMPLETED: {
+      const newTodoItems = state.todoItems.filter(todo => !todo.completed);
       return Object.assign({}, state, {
         todoItems: newTodoItems,
       });

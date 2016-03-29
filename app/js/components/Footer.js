@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import FilterLink from '../containers/FilterLink';
+import { clearCompleted } from '../actions';
 
 import { connect } from 'react-redux';
 
@@ -16,7 +17,13 @@ function mapStateToProps(state) {
   };
 }
 
-function RawFooter({ remaining, empty }) {
+function mapDispatchToProps(dispatch) {
+  return {
+    clear: () => dispatch(clearCompleted()),
+  };
+}
+
+function RawFooter({ remaining, empty, clear }) {
   let style;
   if (empty) {
     style = { display: 'none' };
@@ -39,6 +46,9 @@ function RawFooter({ remaining, empty }) {
           Completed
         </FilterLink>
       </ul>
+      <button className="clear-completed" onClick={clear}>
+        Clear Completed
+      </button>
     </footer>
   );
 }
@@ -46,10 +56,12 @@ function RawFooter({ remaining, empty }) {
 RawFooter.propTypes = {
   remaining: PropTypes.number.isRequired,
   empty: PropTypes.bool.isRequired,
+  clear: PropTypes.func.isRequired,
 };
 
 const Footer = connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(RawFooter);
 
 export default Footer;

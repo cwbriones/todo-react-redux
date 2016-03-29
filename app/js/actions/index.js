@@ -2,10 +2,10 @@ export const ADD_TODO = 'ADD_TODO';
 export const COMPLETE_TODO = 'COMPLETE_TODO';
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 export const DELETE_TODO = 'DELETE_TODO';
-export const DELETE_ALL = 'DELETE_ALL';
 export const TOGGLE_ALL = 'TOGGLE_ALL';
 export const EDIT_TODO = 'EDIT_TODO';
 export const SUBMIT_EDIT = 'SUBMIT_EDIT';
+export const CLEAR_COMPLETED = 'CLEAR_COMPLETED';
 
 export const VisibilityFilters = {
   SHOW_ALL: 'SHOW_ALL',
@@ -33,9 +33,9 @@ export function toggleAll() {
   };
 }
 
-export function deleteAll() {
+export function clearCompleted() {
   return {
-    type: DELETE_ALL,
+    type: CLEAR_COMPLETED,
   };
 }
 
