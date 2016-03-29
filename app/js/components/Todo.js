@@ -2,13 +2,20 @@ import React, { PropTypes } from 'react';
 import EditTodo from './EditTodo';
 
 function Todo({ onClickCheck, onClickDestroy, onEdit, submitEdit, completed, text, editing }) {
-  const completedClass = completed ? 'completed' : '';
-  const editingClass = editing ? 'editing' : '';
-  const todoClass = `${editingClass} ${completedClass}`;
+  if (editing) {
+    return (
+      <li className="editing">
+        <EditTodo
+          className="edit"
+          autoFocus
+          onSubmit={submitEdit}
+          text={text}
+        />
+      </li>
+    );
+  }
   return (
-    <li
-      className={todoClass}
-    >
+    <li className={completed ? 'completed' : ''}>
       <div className="view">
       <label
         onDoubleClick={onEdit}
@@ -26,12 +33,6 @@ function Todo({ onClickCheck, onClickDestroy, onEdit, submitEdit, completed, tex
         onClick={onClickDestroy}
       />
       </div>
-      <EditTodo
-        className="edit"
-        autoFocus
-        onSubmit={submitEdit}
-        text={text}
-      />
     </li>
   );
 }
